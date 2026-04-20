@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6C47FF;
+  --color-primary-dark: #4F2EDB;
+  --color-accent: #FF6B35;
+  --color-accent-light: #FF8C5A;
+  --color-dark: #0A0A14;
+  --color-dark-card: #12121E;
+  --color-dark-border: #1E1E2E;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0A0A14;
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+.float-animation-delay {
+  animation: float 4s ease-in-out infinite 1s;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #6C47FF 0%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(135deg, #a78bfa 0%, #6C47FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-gradient {
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108, 71, 255, 0.3) 0%, transparent 60%),
+              radial-gradient(ellipse 40% 40% at 80% 50%, rgba(255, 107, 53, 0.15) 0%, transparent 60%),
+              #0A0A14;
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.card-glass:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(108, 71, 255, 0.3);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6C47FF 0%, #4F2EDB 100%);
+  box-shadow: 0 4px 24px rgba(108, 71, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 32px rgba(108, 71, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, #FF6B35 0%, #E84C1E 100%);
+  box-shadow: 0 4px 24px rgba(255, 107, 53, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-accent:hover {
+  box-shadow: 0 6px 32px rgba(255, 107, 53, 0.5);
+  transform: translateY(-1px);
+}
+
+.glow-purple {
+  box-shadow: 0 0 40px rgba(108, 71, 255, 0.25);
+}
+
+.glow-orange {
+  box-shadow: 0 0 40px rgba(255, 107, 53, 0.25);
+}
+
+.section-divider {
+  background: linear-gradient(90deg, transparent, rgba(108, 71, 255, 0.4), transparent);
+  height: 1px;
+}
+
+.nav-blur {
+  background: rgba(10, 10, 20, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.feature-icon-bg {
+  background: linear-gradient(135deg, rgba(108, 71, 255, 0.2) 0%, rgba(108, 71, 255, 0.05) 100%);
+  border: 1px solid rgba(108, 71, 255, 0.3);
+}
+
+.coach-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.coach-card-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.pricing-popular {
+  background: linear-gradient(135deg, rgba(108, 71, 255, 0.15) 0%, rgba(108, 71, 255, 0.05) 100%);
+  border: 1px solid rgba(108, 71, 255, 0.5) !important;
+}
+
+.tag-badge {
+  background: rgba(108, 71, 255, 0.15);
+  border: 1px solid rgba(108, 71, 255, 0.3);
+  color: #a78bfa;
+}
+
+.testimonial-stars {
+  color: #FBBF24;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0A14; }
+::-webkit-scrollbar-thumb { background: #2d2d44; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6C47FF; }
