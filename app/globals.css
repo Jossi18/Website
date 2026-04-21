@@ -1,183 +1,197 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #6C47FF;
-  --color-primary-dark: #4F2EDB;
-  --color-accent: #FF6B35;
-  --color-accent-light: #FF8C5A;
-  --color-dark: #0A0A14;
-  --color-dark-card: #12121E;
-  --color-dark-border: #1E1E2E;
-  --font-sans: "Inter", system-ui, sans-serif;
+  /* Bali palette */
+  --color-sand-50:  #FAF7F2;
+  --color-sand-100: #F3EDE2;
+  --color-sand-200: #E8DCC8;
+  --color-sand-300: #D4C4A8;
+  --color-sand-400: #C9B99A;
+  --color-sand-500: #B8A488;
+
+  --color-stone-400: #9B9590;
+  --color-stone-500: #8C8880;
+  --color-stone-600: #6B6560;
+  --color-stone-700: #4A4540;
+  --color-stone-800: #2C2820;
+  --color-stone-900: #1C1A17;
+
+  --color-leaf-50:  #EEF5F1;
+  --color-leaf-100: #D5E8DC;
+  --color-leaf-200: #AACCB8;
+  --color-leaf-300: #7EAF93;
+  --color-leaf-400: #5E9970;
+  --color-leaf-500: #4A7C59;
+  --color-leaf-600: #3D6B4A;
+  --color-leaf-700: #2E5238;
+
+  --color-terra: #C4956A;
+  --color-terra-dark: #A67A52;
+  --color-wood: #8B6914;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: #0A0A14;
-  color: #fff;
+  background: #F8F4EE;
+  color: #1C1A17;
   font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── Animations ── */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-10px) rotate(0.5deg); }
-  66% { transform: translateY(-6px) rotate(-0.5deg); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes float-delay {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50%       { transform: rotate(2deg); }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
+.float-animation       { animation: float 4s ease-in-out infinite; }
+.float-animation-delay { animation: float-delay 4s ease-in-out infinite 1.2s; }
+.leaf-sway             { animation: leaf-sway 6s ease-in-out infinite; }
 
-.shimmer-text {
-  background: linear-gradient(90deg, #6C47FF, #a78bfa, #FF6B35, #6C47FF);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-}
-
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.float-animation {
-  animation: float 4s ease-in-out infinite;
-}
-
-.float-animation-delay {
-  animation: float 4s ease-in-out infinite 1s;
-}
-
-.animate-slide-up {
-  animation: slide-up 0.6s ease-out forwards;
-}
-
+/* ── Typography helpers ── */
 .gradient-text {
-  background: linear-gradient(135deg, #6C47FF 0%, #FF6B35 100%);
+  background: linear-gradient(135deg, #4A7C59 0%, #2E5238 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-warm {
+  background: linear-gradient(135deg, #C4956A 0%, #A67A52 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.gradient-text-purple {
-  background: linear-gradient(135deg, #a78bfa 0%, #6C47FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── Cards ── */
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E8DCC8;
+  border-radius: 20px;
+}
+.card-sand {
+  background: #F3EDE2;
+  border: 1px solid #E8DCC8;
+  border-radius: 20px;
+}
+.card-leaf {
+  background: #EEF5F1;
+  border: 1px solid #AACCB8;
+  border-radius: 20px;
 }
 
-.hero-gradient {
-  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(108, 71, 255, 0.3) 0%, transparent 60%),
-              radial-gradient(ellipse 40% 40% at 80% 50%, rgba(255, 107, 53, 0.15) 0%, transparent 60%),
-              #0A0A14;
-}
-
-.card-glass {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-}
-
-.card-glass:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(108, 71, 255, 0.3);
-  transform: translateY(-4px);
-  transition: all 0.3s ease;
-}
-
+/* ── Buttons ── */
 .btn-primary {
-  background: linear-gradient(135deg, #6C47FF 0%, #4F2EDB 100%);
-  box-shadow: 0 4px 24px rgba(108, 71, 255, 0.4);
+  background: #4A7C59;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(74, 124, 89, 0.35);
   transition: all 0.2s ease;
+  border-radius: 14px;
 }
-
 .btn-primary:hover {
-  box-shadow: 0 6px 32px rgba(108, 71, 255, 0.6);
+  background: #3D6B4A;
+  box-shadow: 0 6px 28px rgba(74, 124, 89, 0.5);
   transform: translateY(-1px);
 }
-
-.btn-accent {
-  background: linear-gradient(135deg, #FF6B35 0%, #E84C1E 100%);
-  box-shadow: 0 4px 24px rgba(255, 107, 53, 0.35);
+.btn-outline {
+  background: transparent;
+  color: #4A7C59;
+  border: 1.5px solid #4A7C59;
   transition: all 0.2s ease;
+  border-radius: 14px;
 }
-
-.btn-accent:hover {
-  box-shadow: 0 6px 32px rgba(255, 107, 53, 0.5);
+.btn-outline:hover {
+  background: #EEF5F1;
+}
+.btn-terra {
+  background: #C4956A;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(196, 149, 106, 0.35);
+  transition: all 0.2s ease;
+  border-radius: 14px;
+}
+.btn-terra:hover {
+  background: #A67A52;
   transform: translateY(-1px);
 }
 
-.glow-purple {
-  box-shadow: 0 0 40px rgba(108, 71, 255, 0.25);
-}
-
-.glow-orange {
-  box-shadow: 0 0 40px rgba(255, 107, 53, 0.25);
-}
-
-.section-divider {
-  background: linear-gradient(90deg, transparent, rgba(108, 71, 255, 0.4), transparent);
-  height: 1px;
-}
-
-.nav-blur {
-  background: rgba(10, 10, 20, 0.8);
+/* ── Nav ── */
+.nav-light {
+  background: rgba(248, 244, 238, 0.88);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid #E8DCC8;
 }
 
-.feature-icon-bg {
-  background: linear-gradient(135deg, rgba(108, 71, 255, 0.2) 0%, rgba(108, 71, 255, 0.05) 100%);
-  border: 1px solid rgba(108, 71, 255, 0.3);
+/* ── Section divider ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4C4A8, transparent);
 }
 
-.coach-card-hover {
+/* ── Tag badge ── */
+.tag-badge {
+  background: #EEF5F1;
+  border: 1px solid #AACCB8;
+  color: #3D6B4A;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.tag-terra {
+  background: #FBF3EC;
+  border: 1px solid #E8C4A0;
+  color: #A67A52;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ── Feature icon ── */
+.icon-leaf {
+  background: #EEF5F1;
+  border: 1px solid #AACCB8;
+  color: #4A7C59;
+}
+.icon-terra {
+  background: #FBF3EC;
+  border: 1px solid #E8C4A0;
+  color: #C4956A;
+}
+.icon-stone {
+  background: #F3EDE2;
+  border: 1px solid #D4C4A8;
+  color: #6B6560;
+}
+
+/* ── Hover lift ── */
+.hover-lift {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.coach-card-hover:hover {
-  transform: translateY(-6px) scale(1.01);
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(44, 40, 32, 0.12);
 }
 
-.pricing-popular {
-  background: linear-gradient(135deg, rgba(108, 71, 255, 0.15) 0%, rgba(108, 71, 255, 0.05) 100%);
-  border: 1px solid rgba(108, 71, 255, 0.5) !important;
-}
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F8F4EE; }
+::-webkit-scrollbar-thumb { background: #D4C4A8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4A7C59; }
 
-.tag-badge {
-  background: rgba(108, 71, 255, 0.15);
-  border: 1px solid rgba(108, 71, 255, 0.3);
-  color: #a78bfa;
+/* ── Organic texture overlay ── */
+.texture-sand {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(74,124,89,0.08) 0%, transparent 60%);
 }
-
-.testimonial-stars {
-  color: #FBBF24;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0A0A14; }
-::-webkit-scrollbar-thumb { background: #2d2d44; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #6C47FF; }
