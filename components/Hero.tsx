@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, Shield, MapPin, CheckCircle2, Star, Play } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, Shield, Star, Play } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -7,174 +7,161 @@ export default function Hero() {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <section className="min-h-screen pt-16 flex flex-col relative overflow-hidden bg-[#F8F4EE]">
+    <section className="relative min-h-screen flex items-end overflow-hidden">
 
-      {/* ── Hero image (avec fallback gradient) ── */}
-      <div className="relative w-full" style={{ height: "62vh", minHeight: 400 }}>
+      {/* ── Background image / fallback ── */}
+      <div className="absolute inset-0">
         {!imgError ? (
           <Image
             src="/images/bali-coaching.jpg"
-            alt="Coaching Bali — infinite pool et jungle"
-            fill
-            priority
+            alt="Coach et client — session yoga Bali"
+            fill priority
             className="object-cover"
-            style={{ objectPosition: "center 30%" }}
+            style={{ objectPosition: "center 25%" }}
             onError={() => setImgError(true)}
           />
         ) : (
-          /* Fallback gradient Bali */
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `
-                radial-gradient(ellipse 60% 80% at 70% 50%, rgba(94,153,112,0.35) 0%, transparent 60%),
-                radial-gradient(ellipse 40% 60% at 20% 30%, rgba(196,149,106,0.25) 0%, transparent 50%),
-                linear-gradient(160deg, #2C2820 0%, #3D3428 30%, #4A5C3E 60%, #3D6B4A 100%)
-              `,
-            }}
-          >
-            {/* Decorative palm leaves SVG */}
-            <svg className="absolute bottom-0 right-0 w-64 h-64 text-white/5" viewBox="0 0 200 200" fill="currentColor">
-              <path d="M180 180 Q120 100 60 20 Q80 60 100 80 Q80 50 100 10 Q130 60 140 100 Q160 80 180 60 Q170 120 140 150 Q160 160 180 180Z"/>
-              <path d="M150 190 Q110 130 50 60 Q70 100 80 120 Q60 90 70 40 Q110 90 120 130 Q140 110 160 90 Q150 140 130 160 Q145 170 150 190Z" opacity="0.6"/>
+          <div className="absolute inset-0" style={{
+            background: "linear-gradient(160deg,#1C2418 0%,#2C3D28 30%,#3D5C3A 55%,#4A6B42 75%,#3D4F2E 100%)"
+          }}>
+            {/* Palm silhouettes */}
+            <svg className="absolute bottom-0 right-0 w-1/3 opacity-10" viewBox="0 0 300 400" fill="#fff">
+              <path d="M150 400 L150 180 Q150 160 160 140 Q200 80 260 20 Q220 60 190 100 Q210 60 230 10 Q180 70 160 120 Q170 80 175 30 Q140 90 145 150 Q130 100 110 40 Q125 100 140 150 Q120 100 80 50 Q110 110 138 160 Q100 120 50 80 Q100 140 140 170 L140 400Z"/>
             </svg>
-            <svg className="absolute top-0 left-0 w-48 h-48 text-white/5 rotate-180" viewBox="0 0 200 200" fill="currentColor">
-              <path d="M180 180 Q120 100 60 20 Q80 60 100 80 Q80 50 100 10 Q130 60 140 100 Q160 80 180 60 Q170 120 140 150 Q160 160 180 180Z"/>
+            <svg className="absolute bottom-0 left-0 w-1/4 opacity-10 scale-x-[-1]" viewBox="0 0 300 400" fill="#fff">
+              <path d="M150 400 L150 180 Q150 160 160 140 Q200 80 260 20 Q220 60 190 100 Q210 60 230 10 Q180 70 160 120 Q170 80 175 30 Q140 90 145 150 Q130 100 110 40 Q125 100 140 150 Q120 100 80 50 Q110 110 138 160 Q100 120 50 80 Q100 140 140 170 L140 400Z"/>
             </svg>
-            {/* Text overlay on fallback */}
-            <div className="absolute inset-0 flex items-center justify-center flex-col gap-3 opacity-20">
-              <p className="text-white text-sm font-medium tracking-widest uppercase">Bali · Coaching · Wellbeing</p>
-            </div>
           </div>
         )}
 
-        {/* Gradient overlay bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-[#F8F4EE]" />
-
-        {/* TRAIN. RECOVER. GROW. */}
-        <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-8 md:gap-16 px-6">
-          {["TRAIN.", "RECOVER.", "GROW."].map(w => (
-            <span key={w} className="text-white font-black text-xl md:text-4xl tracking-widest drop-shadow-lg">
-              {w}
-            </span>
-          ))}
-        </div>
+        {/* Gradient layers */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
       </div>
 
-      {/* ── Copy section ── */}
-      <div className="max-w-7xl mx-auto px-6 w-full py-16">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      {/* ── Content ── */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20 pt-32">
+        <div className="grid lg:grid-cols-2 gap-12 items-end">
 
-          {/* Left */}
+          {/* Left — Copy */}
           <div>
-            <div className="inline-flex items-center gap-2 tag-badge px-4 py-1.5 rounded-full mb-7">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#4A7C59] animate-pulse inline-block" />
-              6 000+ coachs disponibles
+            {/* Live pill */}
+            <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-sm text-white/80">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+              </span>
+              6 000+ coachs disponibles maintenant
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-black leading-[1.06] tracking-tight text-stone-900 mb-6">
-              Trouvez le{" "}
-              <span className="gradient-text">coach parfait</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.04] tracking-tight mb-6">
+              Trouvez le
               <br />
-              en <span className="gradient-text-warm">60 secondes</span>
+              <span style={{ color: "#7EAF93" }}>coach parfait</span>
+              <br />
+              en <span style={{ color: "#C4956A" }}>60 secondes</span>
             </h1>
 
-            <p className="text-lg text-stone-500 leading-relaxed max-w-lg mb-10">
-              La marketplace de coaching inspirée par l&apos;excellence Balinaise —
-              matching IA, coachs certifiés, espaces d&apos;entraînement soigneusement sélectionnés.
+            <p className="text-lg text-white/65 leading-relaxed max-w-lg mb-10">
+              La marketplace de coaching inspirée par l&apos;excellence Balinaise.
+              Matching IA, coachs certifiés, expériences d&apos;entraînement d&apos;exception.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
-              <a href="#pricing" className="btn-primary inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold">
-                Trouver mon coach
-                <ArrowRight size={18} />
+              <a href="#pricing" className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-base text-white transition-all"
+                style={{ background: "#4A7C59", boxShadow: "0 4px 24px rgba(74,124,89,0.5)" }}>
+                Trouver mon coach <ArrowRight size={18} />
               </a>
-              <a href="#how-it-works" className="btn-outline inline-flex items-center justify-center gap-3 px-7 py-4 text-base font-semibold">
-                <span className="w-8 h-8 rounded-full bg-[#EEF5F1] flex items-center justify-center">
-                  <Play size={11} className="text-[#4A7C59] ml-0.5" fill="currentColor" />
+              <a href="#how-it-works" className="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl font-semibold text-base text-white border border-white/25 bg-white/10 backdrop-blur-sm hover:bg-white/15 transition-all">
+                <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                  <Play size={11} fill="white" className="ml-0.5" />
                 </span>
                 Voir la démo
               </a>
             </div>
 
+            {/* Trust */}
             <div className="flex flex-wrap gap-5">
               {[
-                { icon: CheckCircle2, color: "text-[#4A7C59]", label: "Coachs BPJEPS vérifiés" },
-                { icon: Shield, color: "text-stone-400", label: "Paiement sécurisé" },
-                { icon: MapPin, color: "text-[#C4956A]", label: "Géolocalisé" },
-              ].map(({ icon: Icon, color, label }) => (
-                <div key={label} className="flex items-center gap-1.5 text-sm text-stone-500">
-                  <Icon size={14} className={color} />
+                { icon: CheckCircle2, label: "Coachs BPJEPS vérifiés" },
+                { icon: Shield, label: "Paiement Stripe sécurisé" },
+                { icon: MapPin, label: "Géolocalisé" },
+              ].map(({ icon: Icon, label }) => (
+                <div key={label} className="flex items-center gap-1.5 text-sm text-white/55">
+                  <Icon size={14} className="text-white/40" />
                   {label}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right — Card mockup */}
-          <div className="relative flex justify-center lg:justify-end">
-            <div className="float-animation w-72 relative z-10">
-              <div className="card p-6 shadow-xl shadow-stone-200">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="relative">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#5E9970] to-[#3D6B4A] flex items-center justify-center text-2xl shadow-md">
-                      🧘
+          {/* Right — Floating coach card */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="float-animation w-72">
+              {/* Main card */}
+              <div className="rounded-3xl overflow-hidden shadow-2xl" style={{ background: "rgba(255,255,255,0.12)", backdropFilter: "blur(24px)", border: "1px solid rgba(255,255,255,0.2)" }}>
+                <div className="p-6">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="relative">
+                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-lg" style={{ background: "linear-gradient(135deg,#5E9970,#3D6B4A)" }}>🧘</div>
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white/30" />
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white" />
+                    <div className="flex-1">
+                      <div className="font-bold text-white">Sarah Laurent</div>
+                      <div className="text-xs text-white/55">Coach Yoga · Bali</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-white">80€</div>
+                      <div className="text-xs text-white/40">/séance</div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <div className="font-bold text-stone-900">Sarah Laurent</div>
-                    <div className="text-xs text-stone-400">Coach Yoga & Mindfulness</div>
+
+                  {/* Stars */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {[1,2,3,4,5].map(s => <Star key={s} size={13} fill="#C4956A" className="text-[#C4956A]" />)}
+                    <span className="text-xs text-white/50 ml-1.5">4.9 · 127 avis</span>
                   </div>
-                  <div className="text-right">
-                    <div className="font-bold text-stone-900">80€</div>
-                    <div className="text-xs text-stone-400">/séance</div>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {["BPJEPS ✓", "Outdoor", "Domicile"].map(t => (
+                      <span key={t} className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.85)" }}>{t}</span>
+                    ))}
                   </div>
-                </div>
 
-                <div className="flex items-center gap-1 mb-4">
-                  {[1,2,3,4,5].map(s => <Star key={s} size={12} fill="#C4956A" className="text-[#C4956A]" />)}
-                  <span className="text-xs text-stone-400 ml-1.5">4.9 · 127 avis</span>
-                </div>
+                  {/* Availability */}
+                  <div className="flex items-center justify-between mb-5 px-3 py-2.5 rounded-xl" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}>
+                    <span className="text-xs text-white/50">Prochain créneau</span>
+                    <span className="text-xs font-semibold text-green-300">Demain 8h00 ✓</span>
+                  </div>
 
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {["BPJEPS ✓", "Outdoor", "Domicile"].map(t => (
-                    <span key={t} className="tag-badge text-xs px-2.5 py-1 rounded-full">{t}</span>
-                  ))}
+                  <button className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all" style={{ background: "#4A7C59", boxShadow: "0 4px 16px rgba(74,124,89,0.4)" }}>
+                    Réserver une séance
+                  </button>
                 </div>
-
-                <div className="card-sand p-3 mb-4 flex items-center justify-between rounded-xl">
-                  <span className="text-xs text-stone-500">Prochain créneau</span>
-                  <span className="text-xs font-semibold text-[#4A7C59]">Demain 8h00 ✓</span>
-                </div>
-
-                <button className="w-full btn-primary py-3 text-sm font-bold">
-                  Réserver une séance
-                </button>
               </div>
 
-              {/* Match score */}
-              <div className="float-animation-delay absolute -top-5 -left-10 z-20">
-                <div className="card px-4 py-3 shadow-lg flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#C4956A] flex items-center justify-center shadow-md">
-                    <span className="text-sm">🎯</span>
-                  </div>
+              {/* Match score badge */}
+              <div className="float-animation-delay absolute -top-5 -left-12 z-20">
+                <div className="flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl" style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.25)" }}>
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-lg text-base" style={{ background: "#C4956A" }}>🎯</div>
                   <div>
-                    <div className="text-[10px] text-stone-400 uppercase tracking-wider">Score matching</div>
-                    <div className="font-bold text-stone-900 text-sm">98% compatible</div>
+                    <div className="text-[10px] text-white/50 uppercase tracking-wider">Matching</div>
+                    <div className="font-bold text-white text-sm">98% compatible</div>
                   </div>
                 </div>
               </div>
 
-              {/* Confirmed */}
-              <div className="float-animation absolute -bottom-4 -left-6 z-20">
-                <div className="card px-4 py-3 shadow-lg flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#4A7C59] flex items-center justify-center">
+              {/* Confirmed badge */}
+              <div className="float-animation absolute -bottom-4 -left-8 z-20">
+                <div className="flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl" style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.25)" }}>
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: "#4A7C59" }}>
                     <CheckCircle2 size={16} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-[10px] text-stone-400 uppercase tracking-wider">Réservation</div>
-                    <div className="font-bold text-stone-900 text-sm">Confirmée ✓</div>
+                    <div className="text-[10px] text-white/50 uppercase tracking-wider">Réservation</div>
+                    <div className="font-bold text-white text-sm">Confirmée ✓</div>
                   </div>
                 </div>
               </div>
@@ -182,20 +169,21 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="section-divider mt-20 mb-12" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { value: "6 000+", label: "Coachs certifiés" },
-            { value: "50 000+", label: "Clients actifs" },
-            { value: "98%", label: "Taux satisfaction" },
-            { value: "< 60s", label: "Temps de matching" },
-          ].map(s => (
-            <div key={s.label}>
-              <div className="text-3xl md:text-4xl font-black gradient-text mb-1">{s.value}</div>
-              <div className="text-sm text-stone-400">{s.label}</div>
-            </div>
-          ))}
+        {/* Stats bar */}
+        <div className="mt-20 pt-10 border-t border-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: "6 000+", label: "Coachs certifiés" },
+              { value: "50 000+", label: "Clients actifs" },
+              { value: "98%", label: "Taux satisfaction" },
+              { value: "< 60s", label: "Temps de matching" },
+            ].map(s => (
+              <div key={s.label}>
+                <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: "#7EAF93" }}>{s.value}</div>
+                <div className="text-sm text-white/45">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
