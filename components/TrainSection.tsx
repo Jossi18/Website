@@ -32,7 +32,7 @@ export default function TrainSection() {
           {/* Image */}
           {!imgError ? (
             <Image
-              src="/images/train-recover-grow.jpg"
+              src="/images/Bali-training.png"
               alt="Train. Recover. Grow. — CoachMatch Bali"
               fill
               className="object-cover"
