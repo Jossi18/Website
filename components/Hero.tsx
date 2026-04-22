@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         {!imgError ? (
           <Image
-            src="/images/Recover.png"
+            src="/images/bali-coaching.jpg"
             alt="Coach et client — session yoga Bali"
             fill priority
             className="object-cover"
